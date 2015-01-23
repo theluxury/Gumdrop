@@ -13,5 +13,7 @@
 
 @property (weak) IBOutlet NSMenu *mainMenu;
 
+- (IBAction)connectToTrello:(id)sender;
+
 @end
 

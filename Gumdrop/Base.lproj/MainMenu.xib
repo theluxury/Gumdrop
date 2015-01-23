@@ -668,8 +668,11 @@
         </menu>
         <menu id="T8K-F0-EHP">
             <items>
-                <menuItem title="Hello World" id="bU5-VS-fNv">
+                <menuItem title="Connect To Trello" id="bU5-VS-fNv">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="connectToTrello:" target="Voe-Tx-rLC" id="ubI-eo-wT5"/>
+                    </connections>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="327" y="604.5"/>
