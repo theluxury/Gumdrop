@@ -1,0 +1,413 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9C469AB11A71E34E00ADEE3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C469AB01A71E34E00ADEE3C /* AppDelegate.m */; };
+		9C469AB31A71E34E00ADEE3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C469AB21A71E34E00ADEE3C /* main.m */; };
+		9C469AB51A71E34E00ADEE3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C469AB41A71E34E00ADEE3C /* Images.xcassets */; };
+		9C469AB81A71E34E00ADEE3C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C469AB61A71E34E00ADEE3C /* MainMenu.xib */; };
+		9C469AC41A71E34E00ADEE3C /* GumdropTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C469AC31A71E34E00ADEE3C /* GumdropTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9C469ABE1A71E34E00ADEE3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9C469AA21A71E34E00ADEE3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9C469AA91A71E34E00ADEE3C;
+			remoteInfo = Gumdrop;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9C469AAA1A71E34E00ADEE3C /* Gumdrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gumdrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C469AAE1A71E34E00ADEE3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C469AAF1A71E34E00ADEE3C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9C469AB01A71E34E00ADEE3C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9C469AB21A71E34E00ADEE3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9C469AB41A71E34E00ADEE3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9C469AB71A71E34E00ADEE3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9C469ABD1A71E34E00ADEE3C /* GumdropTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GumdropTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C469AC21A71E34E00ADEE3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C469AC31A71E34E00ADEE3C /* GumdropTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GumdropTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9C469AA71A71E34E00ADEE3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C469ABA1A71E34E00ADEE3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9C469AA11A71E34E00ADEE3C = {
+			isa = PBXGroup;
+			children = (
+				9C469AAC1A71E34E00ADEE3C /* Gumdrop */,
+				9C469AC01A71E34E00ADEE3C /* GumdropTests */,
+				9C469AAB1A71E34E00ADEE3C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9C469AAB1A71E34E00ADEE3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C469AAA1A71E34E00ADEE3C /* Gumdrop.app */,
+				9C469ABD1A71E34E00ADEE3C /* GumdropTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9C469AAC1A71E34E00ADEE3C /* Gumdrop */ = {
+			isa = PBXGroup;
+			children = (
+				9C469AAF1A71E34E00ADEE3C /* AppDelegate.h */,
+				9C469AB01A71E34E00ADEE3C /* AppDelegate.m */,
+				9C469AB41A71E34E00ADEE3C /* Images.xcassets */,
+				9C469AB61A71E34E00ADEE3C /* MainMenu.xib */,
+				9C469AAD1A71E34E00ADEE3C /* Supporting Files */,
+			);
+			path = Gumdrop;
+			sourceTree = "<group>";
+		};
+		9C469AAD1A71E34E00ADEE3C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C469AAE1A71E34E00ADEE3C /* Info.plist */,
+				9C469AB21A71E34E00ADEE3C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C469AC01A71E34E00ADEE3C /* GumdropTests */ = {
+			isa = PBXGroup;
+			children = (
+				9C469AC31A71E34E00ADEE3C /* GumdropTests.m */,
+				9C469AC11A71E34E00ADEE3C /* Supporting Files */,
+			);
+			path = GumdropTests;
+			sourceTree = "<group>";
+		};
+		9C469AC11A71E34E00ADEE3C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C469AC21A71E34E00ADEE3C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9C469AA91A71E34E00ADEE3C /* Gumdrop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C469AC71A71E34E00ADEE3C /* Build configuration list for PBXNativeTarget "Gumdrop" */;
+			buildPhases = (
+				9C469AA61A71E34E00ADEE3C /* Sources */,
+				9C469AA71A71E34E00ADEE3C /* Frameworks */,
+				9C469AA81A71E34E00ADEE3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gumdrop;
+			productName = Gumdrop;
+			productReference = 9C469AAA1A71E34E00ADEE3C /* Gumdrop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9C469ABC1A71E34E00ADEE3C /* GumdropTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C469ACA1A71E34E00ADEE3C /* Build configuration list for PBXNativeTarget "GumdropTests" */;
+			buildPhases = (
+				9C469AB91A71E34E00ADEE3C /* Sources */,
+				9C469ABA1A71E34E00ADEE3C /* Frameworks */,
+				9C469ABB1A71E34E00ADEE3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9C469ABF1A71E34E00ADEE3C /* PBXTargetDependency */,
+			);
+			name = GumdropTests;
+			productName = GumdropTests;
+			productReference = 9C469ABD1A71E34E00ADEE3C /* GumdropTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9C469AA21A71E34E00ADEE3C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Mark Wang";
+				TargetAttributes = {
+					9C469AA91A71E34E00ADEE3C = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					9C469ABC1A71E34E00ADEE3C = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 9C469AA91A71E34E00ADEE3C;
+					};
+				};
+			};
+			buildConfigurationList = 9C469AA51A71E34E00ADEE3C /* Build configuration list for PBXProject "Gumdrop" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9C469AA11A71E34E00ADEE3C;
+			productRefGroup = 9C469AAB1A71E34E00ADEE3C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9C469AA91A71E34E00ADEE3C /* Gumdrop */,
+				9C469ABC1A71E34E00ADEE3C /* GumdropTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9C469AA81A71E34E00ADEE3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C469AB51A71E34E00ADEE3C /* Images.xcassets in Resources */,
+				9C469AB81A71E34E00ADEE3C /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C469ABB1A71E34E00ADEE3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9C469AA61A71E34E00ADEE3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C469AB31A71E34E00ADEE3C /* main.m in Sources */,
+				9C469AB11A71E34E00ADEE3C /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C469AB91A71E34E00ADEE3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C469AC41A71E34E00ADEE3C /* GumdropTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9C469ABF1A71E34E00ADEE3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9C469AA91A71E34E00ADEE3C /* Gumdrop */;
+			targetProxy = 9C469ABE1A71E34E00ADEE3C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9C469AB61A71E34E00ADEE3C /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C469AB71A71E34E00ADEE3C /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9C469AC51A71E34E00ADEE3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9C469AC61A71E34E00ADEE3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9C469AC81A71E34E00ADEE3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Gumdrop/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9C469AC91A71E34E00ADEE3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Gumdrop/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9C469ACB1A71E34E00ADEE3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GumdropTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gumdrop.app/Contents/MacOS/Gumdrop";
+			};
+			name = Debug;
+		};
+		9C469ACC1A71E34E00ADEE3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GumdropTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gumdrop.app/Contents/MacOS/Gumdrop";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9C469AA51A71E34E00ADEE3C /* Build configuration list for PBXProject "Gumdrop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C469AC51A71E34E00ADEE3C /* Debug */,
+				9C469AC61A71E34E00ADEE3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C469AC71A71E34E00ADEE3C /* Build configuration list for PBXNativeTarget "Gumdrop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C469AC81A71E34E00ADEE3C /* Debug */,
+				9C469AC91A71E34E00ADEE3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9C469ACA1A71E34E00ADEE3C /* Build configuration list for PBXNativeTarget "GumdropTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C469ACB1A71E34E00ADEE3C /* Debug */,
+				9C469ACC1A71E34E00ADEE3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9C469AA21A71E34E00ADEE3C /* Project object */;
+}
