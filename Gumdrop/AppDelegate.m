@@ -13,6 +13,7 @@
 @property (weak) IBOutlet NSWindow *window;
 @property (strong, nonatomic) NSStatusItem *statusItem;
 @property (strong, nonatomic) NSString *appKey;
+@property (strong, nonatomic) NSString *authToken;
 @end
 
 @implementation AppDelegate
@@ -57,6 +58,27 @@
             _appKey = [textField stringValue];
         }
         
+        return;
+    }
+    
+    if (!_authToken) {
+        // Open a browser window that sends them to https://trello.com/1/authorize?key=substitutewithyourapplicationkey&name=Gumdrop&expiration=1day&response_type=token&scope=read,write, then open an alert that tells them to copy and paste the appkey.
+        NSString *authTokenUrl = [NSString stringWithFormat:@"https://trello.com/1/authorize?key=%@&name=Gumdrop&expiration=1day&response_type=token&scope=read,write", _appKey];
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:authTokenUrl]];
+        
+        NSAlert *alert = [[NSAlert alloc] init];
+        alert.messageText = @"Please allow Gumdrop to have access to read and write from your Trello boards. Please copy and paste the token into this prompt after you allow access.";
+        [alert addButtonWithTitle:@"Ok"];
+        [alert addButtonWithTitle:@"Cancel"];
+        
+        NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 400, 24)];
+        [textField selectText:self];
+        [alert setAccessoryView:textField];
+        
+        NSModalResponse response = [alert runModal];
+        if(response == NSAlertFirstButtonReturn)
+            _authToken = [textField stringValue];
+            
         return;
     }
 
