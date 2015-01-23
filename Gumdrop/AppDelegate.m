@@ -12,6 +12,7 @@
 
 @property (weak) IBOutlet NSWindow *window;
 @property (strong, nonatomic) NSStatusItem *statusItem;
+@property (strong, nonatomic) NSString *appKey;
 @end
 
 @implementation AppDelegate
@@ -37,13 +38,34 @@
 }
 
 - (IBAction)connectToTrello:(id)sender {
-    // Create the request.
-    // Auth token for read/write trello 1caa7763542bff79381d4328c09abb3b644f58944b0564365a4319f5fcc49951
+    // First, make sure there is an appKey
+    if (!_appKey) {
+        // Open a browser window that sends them to https://trello.com/1/appKey/generate, then open an alert that tells them to copy and paste the appkey.
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://trello.com/1/appKey/generate"]];
+        
+        NSAlert *alert = [[NSAlert alloc] init];
+        alert.messageText = @"Please allow Trello to generate a key and then copy and paste it into this prompt.";
+        [alert addButtonWithTitle:@"Ok"];
+        [alert addButtonWithTitle:@"Cancel"];
+        
+        NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 400, 24)];
+        [textField selectText:self];
+        [alert setAccessoryView:textField];
+        
+        NSModalResponse response = [alert runModal];
+        if(response == NSAlertFirstButtonReturn){
+            _appKey = [textField stringValue];
+        }
+        
+        return;
+    }
+
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.trello.com/1/boards/JIA5o6lK?key=949a9035e9bf9abac4af5d5e2c634d3b&token=1caa7763542bff79381d4328c09abb3b644f58944b0564365a4319f5fcc49951&cards=open&lists=open"]  cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
+    
+    NSMutableURLRequest *tokenRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.trello.com/1/members/me/boards?key=949a9035e9bf9abac4af5d5e2c634d3b&token=f277f6639eeb612e148efd60dabae5b05a7d00ea896d4ed3169b4b297a6104f"]  cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
     
     // Specify that it will be a POST request
-    request.HTTPMethod = @"GET";
+    tokenRequest.HTTPMethod = @"GET";
     
     NSLog(@"starting get");
     
@@ -64,7 +86,7 @@
     
     NSError *error;
     
-    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:tokenRequest returningResponse:nil error:&error];
     NSString *result= [[NSString alloc] initWithData:returnData encoding:NSASCIIStringEncoding];
     
     if (error)
