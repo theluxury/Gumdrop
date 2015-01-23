@@ -12,11 +12,12 @@
 
 @property (weak) IBOutlet NSWindow *window;
 @property (strong, nonatomic) NSStatusItem *statusItem;
-@property (strong, nonatomic) NSString *appKey;
-@property (strong, nonatomic) NSString *authToken;
 @end
 
 @implementation AppDelegate
+
+NSString * const APP_KEY = @"APP_KEY";
+NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
@@ -39,8 +40,10 @@
 }
 
 - (IBAction)connectToTrello:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
     // First, make sure there is an appKey
-    if (!_appKey) {
+    if (![defaults objectForKey:APP_KEY]) {
         // Open a browser window that sends them to https://trello.com/1/appKey/generate, then open an alert that tells them to copy and paste the appkey.
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://trello.com/1/appKey/generate"]];
         
@@ -55,15 +58,15 @@
         
         NSModalResponse response = [alert runModal];
         if(response == NSAlertFirstButtonReturn){
-            _appKey = [textField stringValue];
+            [defaults setObject:[textField stringValue] forKey:APP_KEY];
         }
         
         return;
     }
     
-    if (!_authToken) {
+    if (![defaults objectForKey:AUTH_TOKEN]) {
         // Open a browser window that sends them to https://trello.com/1/authorize?key=substitutewithyourapplicationkey&name=Gumdrop&expiration=1day&response_type=token&scope=read,write, then open an alert that tells them to copy and paste the appkey.
-        NSString *authTokenUrl = [NSString stringWithFormat:@"https://trello.com/1/authorize?key=%@&name=Gumdrop&expiration=1day&response_type=token&scope=read,write", _appKey];
+        NSString *authTokenUrl = [NSString stringWithFormat:@"https://trello.com/1/authorize?key=%@&name=Gumdrop&expiration=1day&response_type=token&scope=read,write", [defaults objectForKey:APP_KEY]];
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:authTokenUrl]];
         
         NSAlert *alert = [[NSAlert alloc] init];
@@ -77,42 +80,24 @@
         
         NSModalResponse response = [alert runModal];
         if(response == NSAlertFirstButtonReturn)
-            _authToken = [textField stringValue];
-            
+            [defaults setObject:[textField stringValue] forKey:AUTH_TOKEN];
         return;
     }
-
     
+    NSString *boardRequestString = [NSString stringWithFormat:@"https://api.trello.com/1/members/me/boards?key=%@&token=%@", [defaults objectForKey:APP_KEY], [defaults objectForKey:AUTH_TOKEN]];
+    NSMutableURLRequest *boardRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:boardRequestString]  cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
     
-    NSMutableURLRequest *tokenRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.trello.com/1/members/me/boards?key=949a9035e9bf9abac4af5d5e2c634d3b&token=f277f6639eeb612e148efd60dabae5b05a7d00ea896d4ed3169b4b297a6104f"]  cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
-    
-    // Specify that it will be a POST request
-    tokenRequest.HTTPMethod = @"GET";
-    
-    NSLog(@"starting get");
-    
-    // This is how we set header fields
-    //[request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    // Convert your data and set your request's HTTPBody property
-//    NSData *requestBodyData = [bodyData dataUsingEncoding:NSUTF8StringEncoding];
-//    request.HTTPBody = requestBodyData;
-    
-    // Create url connection and fire request
-//    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-//    if (!conn) {
-//        NSLog(@"no connection to Trello :(");
-//    }
-//    
-//    NSLog(@"got past conn");
+    boardRequest.HTTPMethod = @"GET";
     
     NSError *error;
     
-    NSData *returnData = [NSURLConnection sendSynchronousRequest:tokenRequest returningResponse:nil error:&error];
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:boardRequest returningResponse:nil error:&error];
     NSString *result= [[NSString alloc] initWithData:returnData encoding:NSASCIIStringEncoding];
     
-    if (error)
+    if (error) {
         NSLog(@"error is %@", error);
+        
+    }
     NSLog(@"result is %@", result);
     
     NSLog(@"finished");
