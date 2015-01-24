@@ -111,7 +111,13 @@ NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
         return;
     }
     
-    NSLog(@"result is %@", result);
+    NSArray *userBoardArray = [NSJSONSerialization JSONObjectWithData:returnData
+                                                              options:0 error:nil];
+    // NSLog(@"array is %@", userBoardArray);
+    // NSLog(@"result is %@", result);
+    
+    for (NSDictionary *dict in userBoardArray)
+        NSLog(@"name is %@", [dict objectForKey:@"name"]);
 }
 
 - (BOOL)checkForAuthToken {
