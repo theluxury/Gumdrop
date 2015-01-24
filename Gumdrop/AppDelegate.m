@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "NSString+Contains.h"
 
 @interface AppDelegate ()
 
@@ -41,8 +42,6 @@ NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
 
 - (IBAction)connectToTrello:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults removeObjectForKey:APP_KEY];
-    [defaults removeObjectForKey:AUTH_TOKEN];
 
     // First, make sure there is an appKey
     if (![defaults objectForKey:APP_KEY]) {
@@ -77,13 +76,43 @@ NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
                 [alert setAccessoryView:textField];
                 
                 NSModalResponse response = [alert runModal];
-                if(response == NSAlertFirstButtonReturn)
+                // 
+                if(response == NSAlertFirstButtonReturn) {
                     [defaults setObject:[textField stringValue] forKey:AUTH_TOKEN];
+                    NSString *boardRequestString = [NSString stringWithFormat:@"https://api.trello.com/1/members/me/boards?key=%@&token=%@", [defaults objectForKey:APP_KEY], [defaults objectForKey:AUTH_TOKEN]];
+                    NSMutableURLRequest *boardRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:boardRequestString]  cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
+                    
+                    boardRequest.HTTPMethod = @"GET";
+                    
+                    NSError *error;
+                    
+                    NSData *returnData = [NSURLConnection sendSynchronousRequest:boardRequest returningResponse:nil error:&error];
+                    NSString *result= [[NSString alloc] initWithData:returnData encoding:NSASCIIStringEncoding];
+                    
+                    if (error) {
+                        NSLog(@"error is %@", error);
+                        if ([result contains:@"expired"]) {
+                            NSAlert *expiredAlert = [[NSAlert alloc] init];
+                            expiredAlert.messageText = @"Your authorization token seems to be expired. Please run Gumdrop again to get a new one.";
+                            [expiredAlert runModal];
+                            [defaults removeObjectForKey:AUTH_TOKEN];
+                        } else {
+                            NSAlert *expiredAlert = [[NSAlert alloc] init];
+                            expiredAlert.messageText = @"Something went wrong. Please run Gumdrop again to get the right application key and authorization token";
+                            [expiredAlert runModal];
+                            [defaults removeObjectForKey:APP_KEY];
+                            [defaults removeObjectForKey:AUTH_TOKEN];
+                        }
+                        return;
+                    }
+                    NSLog(@"result is %@", result);
+                }
                 else
                     // If they press cancel, I just assume they pasted in the wrong APP KEY, so get rid of it to restart chain
                     [defaults removeObjectForKey:APP_KEY];
             }
         }
+        
         return;
     }
     
@@ -100,11 +129,20 @@ NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
     
     if (error) {
         NSLog(@"error is %@", error);
-        
+        if ([result contains:@"expired"]) {
+            NSAlert *expiredAlert = [[NSAlert alloc] init];
+            expiredAlert.messageText = @"Your authorization token seems to be expired. Please run Gumdrop again to get a new one.";
+            [expiredAlert runModal];
+            [defaults removeObjectForKey:AUTH_TOKEN];
+        } else {
+            NSAlert *expiredAlert = [[NSAlert alloc] init];
+            expiredAlert.messageText = @"Something went wrong. Please run Gumdrop again to get the right application key and authorization token";
+            [expiredAlert runModal];
+            [defaults removeObjectForKey:APP_KEY];
+            [defaults removeObjectForKey:AUTH_TOKEN];
+        }
+        return;
     }
-    NSLog(@"result is %@", result);
-    
-    NSLog(@"finished");
 
 }
 @end

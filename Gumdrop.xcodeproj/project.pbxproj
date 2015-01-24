@@ -12,6 +12,7 @@
 		9C469AB51A71E34E00ADEE3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C469AB41A71E34E00ADEE3C /* Images.xcassets */; };
 		9C469AB81A71E34E00ADEE3C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C469AB61A71E34E00ADEE3C /* MainMenu.xib */; };
 		9C469AC41A71E34E00ADEE3C /* GumdropTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C469AC31A71E34E00ADEE3C /* GumdropTests.m */; };
+		9C8C90A81A732082006C2E95 /* NSString+Contains.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C90A71A732082006C2E95 /* NSString+Contains.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,8 @@
 		9C469ABD1A71E34E00ADEE3C /* GumdropTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GumdropTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C469AC21A71E34E00ADEE3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C469AC31A71E34E00ADEE3C /* GumdropTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GumdropTests.m; sourceTree = "<group>"; };
+		9C8C90A61A732082006C2E95 /* NSString+Contains.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Contains.h"; sourceTree = "<group>"; };
+		9C8C90A71A732082006C2E95 /* NSString+Contains.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Contains.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 			children = (
 				9C469AAF1A71E34E00ADEE3C /* AppDelegate.h */,
 				9C469AB01A71E34E00ADEE3C /* AppDelegate.m */,
+				9C8C90A61A732082006C2E95 /* NSString+Contains.h */,
+				9C8C90A71A732082006C2E95 /* NSString+Contains.m */,
 				9C469AB41A71E34E00ADEE3C /* Images.xcassets */,
 				9C469AB61A71E34E00ADEE3C /* MainMenu.xib */,
 				9C469AAD1A71E34E00ADEE3C /* Supporting Files */,
@@ -210,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C8C90A81A732082006C2E95 /* NSString+Contains.m in Sources */,
 				9C469AB31A71E34E00ADEE3C /* main.m in Sources */,
 				9C469AB11A71E34E00ADEE3C /* AppDelegate.m in Sources */,
 			);
@@ -398,6 +404,7 @@
 				9C469AC91A71E34E00ADEE3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9C469ACA1A71E34E00ADEE3C /* Build configuration list for PBXNativeTarget "GumdropTests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +413,7 @@
 				9C469ACC1A71E34E00ADEE3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
