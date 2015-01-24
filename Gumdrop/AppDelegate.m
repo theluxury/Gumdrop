@@ -122,11 +122,13 @@ NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
         if(authTokenString) {
             [defaults setObject:authTokenString forKey:AUTH_TOKEN];
             return YES;
-        } else
+        } else {
             // If they press cancel, I just assume they pasted in the wrong APP KEY, so get rid of it to restart chain
+            [defaults removeObjectForKey:APP_KEY];
             return NO;
+        }
     } else {
-        return NO;
+        return YES;
     }
 }
 
