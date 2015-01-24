@@ -53,12 +53,14 @@ NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
         // this means they pressed "Okay" instead of "Cancel"
         if(appKeyString){
             [defaults setObject:appKeyString forKey:APP_KEY];
-            [self checkForAuthToken];
+            if ([self checkForAuthToken])
+                [self getDataFromTrello];
         }
         return;
     }
     
-    [self checkForAuthToken];
+    if ([self checkForAuthToken])
+        [self getDataFromTrello];
 }
 
 - (NSString *)getPromptText:(NSString *)prompt {
@@ -112,22 +114,20 @@ NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
     NSLog(@"result is %@", result);
 }
 
-- (void)checkForAuthToken {
+- (BOOL)checkForAuthToken {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:AUTH_TOKEN]) {
         
         NSString *authTokenString = [self getNewAuthToken];
         if(authTokenString) {
             [defaults setObject:authTokenString forKey:AUTH_TOKEN];
-            [self getDataFromTrello];
+            return YES;
         } else
             // If they press cancel, I just assume they pasted in the wrong APP KEY, so get rid of it to restart chain
-            [defaults removeObjectForKey:APP_KEY];
+            return NO;
     } else {
-        [self getDataFromTrello];
+        return NO;
     }
-
-    
 }
 
 - (NSString *) getNewAuthToken {
