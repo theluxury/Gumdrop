@@ -53,27 +53,12 @@ NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
         // this means they pressed "Okay" instead of "Cancel"
         if(appKeyString){
             [defaults setObject:appKeyString forKey:APP_KEY];
-            
-            if (![defaults objectForKey:AUTH_TOKEN]) {
-                // Open a browser window that sends them to https://trello.com/1/authorize?key=substitutewithyourapplicationkey&name=Gumdrop&expiration=1day&response_type=token&scope=read,write, then open an alert that tells them to copy and paste the appkey.
-                NSString *authTokenUrl = [NSString stringWithFormat:@"https://trello.com/1/authorize?key=%@&name=Gumdrop&expiration=1day&response_type=token&scope=read,write", [defaults objectForKey:APP_KEY]];
-                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:authTokenUrl]];
-                
-                NSString *authTokenString = [self getPromptText:@"Please allow Gumdrop to have access to read and write from your Trello boards, then copy and paste the token into this prompt after you allow access. If it did not take you to the right page, please press cancel and try again, making sure your app key is correct."];
-
-                if(authTokenString) {
-                    [defaults setObject:authTokenString forKey:AUTH_TOKEN];
-                    [self getDataFromTrello];
-                } else
-                    // If they press cancel, I just assume they pasted in the wrong APP KEY, so get rid of it to restart chain
-                    [defaults removeObjectForKey:APP_KEY];
-            }
+            [self checkForAuthToken];
         }
-        
         return;
     }
     
-    [self getDataFromTrello];
+    [self checkForAuthToken];
 }
 
 - (NSString *)getPromptText:(NSString *)prompt {
@@ -125,5 +110,33 @@ NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
     }
     
     NSLog(@"result is %@", result);
+}
+
+- (void)checkForAuthToken {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:AUTH_TOKEN]) {
+        
+        NSString *authTokenString = [self getNewAuthToken];
+        if(authTokenString) {
+            [defaults setObject:authTokenString forKey:AUTH_TOKEN];
+            [self getDataFromTrello];
+        } else
+            // If they press cancel, I just assume they pasted in the wrong APP KEY, so get rid of it to restart chain
+            [defaults removeObjectForKey:APP_KEY];
+    } else {
+        [self getDataFromTrello];
+    }
+
+    
+}
+
+- (NSString *) getNewAuthToken {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // Open a browser window that sends them to https://trello.com/1/authorize?key=substitutewithyourapplicationkey&name=Gumdrop&expiration=1day&response_type=token&scope=read,write, then open an alert that tells them to copy and paste the appkey.
+    NSString *authTokenUrl = [NSString stringWithFormat:@"https://trello.com/1/authorize?key=%@&name=Gumdrop&expiration=1day&response_type=token&scope=read,write", [defaults objectForKey:APP_KEY]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:authTokenUrl]];
+    
+    return [self getPromptText:@"Please allow Gumdrop to have access to read and write from your Trello boards, then copy and paste the token into this prompt after you allow access. If it did not take you to the right page, please press cancel and try again, making sure your app key is correct."];
 }
 @end
