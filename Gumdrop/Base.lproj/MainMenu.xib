@@ -14,6 +14,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="boardListMenu" destination="0PV-Gz-D61" id="OKe-9V-dBY"/>
+                <outlet property="columnListMenu" destination="TKU-L8-VBu" id="QZo-x1-AdK"/>
                 <outlet property="mainMenu" destination="T8K-F0-EHP" id="KWc-BC-yIS"/>
             </connections>
         </customObject>
@@ -681,13 +682,7 @@
                 </menuItem>
                 <menuItem title="Choose your column" id="1gI-RZ-Jj1">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Choose your column" id="TKU-L8-VBu">
-                        <items>
-                            <menuItem title="Item" id="Hs1-fI-TTB">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                        </items>
-                    </menu>
+                    <menu key="submenu" title="Choose your column" id="TKU-L8-VBu"/>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="327" y="604.5"/>

@@ -143,6 +143,16 @@ NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
             NSData *returnData = [NSURLConnection sendSynchronousRequest:listRequest returningResponse:nil error:&error];
             NSString *result= [[NSString alloc] initWithData:returnData encoding:NSASCIIStringEncoding];
             NSLog(@"result is %@", result);
+            
+            NSDictionary *columnListArray = [NSJSONSerialization JSONObjectWithData:returnData
+                                                                       options:0 error:nil];
+            NSArray *columnListArrayJSON = [columnListArray objectForKey:@"lists"];
+            for (NSDictionary *dict in columnListArrayJSON) {
+                NSLog(@"dict is %@", dict);
+                // Key equivalent must be empty string, not nil.
+                NSMenuItem *columnListMenuItem = [[NSMenuItem alloc] initWithTitle:[dict objectForKey:@"name"] action:nil keyEquivalent:@""];
+                [_columnListMenu addItem:columnListMenuItem];
+            }
         }
     }
     
