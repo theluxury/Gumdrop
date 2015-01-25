@@ -13,6 +13,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="boardListMenu" destination="0PV-Gz-D61" id="OKe-9V-dBY"/>
                 <outlet property="mainMenu" destination="T8K-F0-EHP" id="KWc-BC-yIS"/>
             </connections>
         </customObject>
@@ -673,6 +674,10 @@
                     <connections>
                         <action selector="connectToTrello:" target="Voe-Tx-rLC" id="ubI-eo-wT5"/>
                     </connections>
+                </menuItem>
+                <menuItem title="Choose your board" id="y6Z-ip-VhO">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Choose your board" id="0PV-Gz-D61"/>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="327" y="604.5"/>

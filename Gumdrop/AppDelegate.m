@@ -13,6 +13,8 @@
 
 @property (weak) IBOutlet NSWindow *window;
 @property (strong, nonatomic) NSStatusItem *statusItem;
+@property (strong, nonatomic) NSArray *boardListArray;
+@property (strong, nonatomic) NSDictionary *currSelectedBoard;
 @end
 
 @implementation AppDelegate
@@ -111,13 +113,26 @@ NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
         return;
     }
     
-    NSArray *userBoardArray = [NSJSONSerialization JSONObjectWithData:returnData
+    _boardListArray = [NSJSONSerialization JSONObjectWithData:returnData
                                                               options:0 error:nil];
     // NSLog(@"array is %@", userBoardArray);
-    // NSLog(@"result is %@", result);
     
-    for (NSDictionary *dict in userBoardArray)
-        NSLog(@"name is %@", [dict objectForKey:@"name"]);
+    for (NSDictionary *dict in _boardListArray) {
+        // Key equivalent must be empty string, not nil.
+        NSMenuItem *boardListMenuItem = [[NSMenuItem alloc] initWithTitle:[dict objectForKey:@"name"] action:@selector(boardListMenuItemClicked:) keyEquivalent:@""];
+        [_boardListMenu addItem:boardListMenuItem];
+    }
+}
+
+- (void)boardListMenuItemClicked:(NSMenuItem *)menuItem {
+    
+    for (NSDictionary *dict in _boardListArray) {
+        if ([[dict objectForKey:@"name"] isEqualToString:[menuItem title]]) {
+            NSLog(@"clicked on %@", dict);
+            _currSelectedBoard = dict;
+        }
+    }
+    
 }
 
 - (BOOL)checkForAuthToken {

@@ -15,5 +15,7 @@
 
 - (IBAction)connectToTrello:(id)sender;
 
+@property (weak) IBOutlet NSMenu *boardListMenu;
+
 @end
 
