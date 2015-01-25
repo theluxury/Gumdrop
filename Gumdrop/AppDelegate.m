@@ -125,11 +125,24 @@ NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
 }
 
 - (void)boardListMenuItemClicked:(NSMenuItem *)menuItem {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     for (NSDictionary *dict in _boardListArray) {
         if ([[dict objectForKey:@"name"] isEqualToString:[menuItem title]]) {
             NSLog(@"clicked on %@", dict);
             _currSelectedBoard = dict;
+            //  https://api.trello.com/1/boards/[board_id]?lists=open&list_fields=name&fields=name,desc&key=[application_key]&token=[optional_auth_token] URL to get the lists (columns) from this board
+            NSString *listRequestString = [NSString stringWithFormat:@"https://api.trello.com/1/boards/%@?lists=open&list_fields=name&fields=name,desc&key=%@&token=%@", [dict objectForKey:@"id"], [defaults objectForKey:APP_KEY], [defaults objectForKey:AUTH_TOKEN]];
+            
+            NSMutableURLRequest *listRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:listRequestString]  cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
+            
+            listRequest.HTTPMethod = @"GET";
+            
+            NSError *error;
+            
+            NSData *returnData = [NSURLConnection sendSynchronousRequest:listRequest returningResponse:nil error:&error];
+            NSString *result= [[NSString alloc] initWithData:returnData encoding:NSASCIIStringEncoding];
+            NSLog(@"result is %@", result);
         }
     }
     

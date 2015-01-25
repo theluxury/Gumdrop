@@ -679,6 +679,16 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Choose your board" id="0PV-Gz-D61"/>
                 </menuItem>
+                <menuItem title="Choose your column" id="1gI-RZ-Jj1">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Choose your column" id="TKU-L8-VBu">
+                        <items>
+                            <menuItem title="Item" id="Hs1-fI-TTB">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
             </items>
             <point key="canvasLocation" x="327" y="604.5"/>
         </menu>
