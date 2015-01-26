@@ -61,7 +61,7 @@ NSString * const GIT_PATH_KEY = @"GIT_PATH";
     [alert addButtonWithTitle:@"Cancel"];
     
     NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 400, 24)];
-    [textField setStringValue:[[NSUserDefaults standardUserDefaults] stringForKey:GIT_PATH_KEY]];
+    [textField setStringValue:[[NSUserDefaults standardUserDefaults] stringForKey:GIT_PATH_KEY] ?: @""];
     [textField selectText:self];
     [alert setAccessoryView:textField];
     
