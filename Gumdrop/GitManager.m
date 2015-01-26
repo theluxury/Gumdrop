@@ -22,7 +22,7 @@
         // Probably a better way to parse this somehow?
         // we want to extract 'PeppermintInc/Gumdrop' from 'origin	git@github.com:PeppermintInc/Gumdrop.git (fetch)'
         NSString *firstLine = [remoteInfo componentsSeparatedByString:@"\n"][0];
-        NSString *remoteURL = [firstLine componentsSeparatedByString:@" "][2]; // (note that we want 2, not 1, due to double space)
+        NSString *remoteURL = [firstLine componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]][1];
         NSString *gpath = [remoteURL componentsSeparatedByString:@":"][1];
         NSString *name = [gpath substringToIndex:gpath.length-4];
         self.githubName = name;
