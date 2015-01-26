@@ -13,6 +13,8 @@
 		9C469AB81A71E34E00ADEE3C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C469AB61A71E34E00ADEE3C /* MainMenu.xib */; };
 		9C469AC41A71E34E00ADEE3C /* GumdropTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C469AC31A71E34E00ADEE3C /* GumdropTests.m */; };
 		9C8C90A81A732082006C2E95 /* NSString+Contains.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C90A71A732082006C2E95 /* NSString+Contains.m */; };
+		C10126591A76C934000F3810 /* GitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C10126581A76C934000F3810 /* GitManager.m */; };
+		C101265D1A76CC56000F3810 /* GitCommit.m in Sources */ = {isa = PBXBuildFile; fileRef = C101265C1A76CC56000F3810 /* GitCommit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,10 @@
 		9C469AC31A71E34E00ADEE3C /* GumdropTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GumdropTests.m; sourceTree = "<group>"; };
 		9C8C90A61A732082006C2E95 /* NSString+Contains.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Contains.h"; sourceTree = "<group>"; };
 		9C8C90A71A732082006C2E95 /* NSString+Contains.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Contains.m"; sourceTree = "<group>"; };
+		C10126571A76C934000F3810 /* GitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitManager.h; sourceTree = "<group>"; };
+		C10126581A76C934000F3810 /* GitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitManager.m; sourceTree = "<group>"; };
+		C101265B1A76CC56000F3810 /* GitCommit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitCommit.h; sourceTree = "<group>"; };
+		C101265C1A76CC56000F3810 /* GitCommit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitCommit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 		9C469AAC1A71E34E00ADEE3C /* Gumdrop */ = {
 			isa = PBXGroup;
 			children = (
+				C101265A1A76CC39000F3810 /* Git */,
 				9C469AAF1A71E34E00ADEE3C /* AppDelegate.h */,
 				9C469AB01A71E34E00ADEE3C /* AppDelegate.m */,
 				9C8C90A61A732082006C2E95 /* NSString+Contains.h */,
@@ -114,6 +121,17 @@
 				9C469AC21A71E34E00ADEE3C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C101265A1A76CC39000F3810 /* Git */ = {
+			isa = PBXGroup;
+			children = (
+				C10126571A76C934000F3810 /* GitManager.h */,
+				C10126581A76C934000F3810 /* GitManager.m */,
+				C101265B1A76CC56000F3810 /* GitCommit.h */,
+				C101265C1A76CC56000F3810 /* GitCommit.m */,
+			);
+			name = Git;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,8 +233,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C101265D1A76CC56000F3810 /* GitCommit.m in Sources */,
 				9C8C90A81A732082006C2E95 /* NSString+Contains.m in Sources */,
 				9C469AB31A71E34E00ADEE3C /* main.m in Sources */,
+				C10126591A76C934000F3810 /* GitManager.m in Sources */,
 				9C469AB11A71E34E00ADEE3C /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +354,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Gumdrop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -345,6 +366,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Gumdrop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
