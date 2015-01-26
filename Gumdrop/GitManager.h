@@ -12,8 +12,9 @@
 @interface GitManager : NSObject
 
 @property (nonatomic, strong) NSString *repoPath;
+@property (nonatomic, strong) NSString *githubName;
 
-- (instancetype)initWithPath:(NSString *)path
+- (instancetype)initWithPath:(NSString *)path;
 - (GitCommit *)getHeadCommit;
 
 @end
