@@ -14,6 +14,7 @@
 @property (weak) IBOutlet NSMenu *mainMenu;
 
 - (IBAction)connectToTrello:(id)sender;
+- (IBAction)connectToGit:(id)sender;
 
 @property (weak) IBOutlet NSMenu *boardListMenu;
 @property (weak) IBOutlet NSMenu *columnListMenu;

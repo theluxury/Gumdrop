@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GitManager.h"
 #import "NSString+Contains.h"
 
 @interface AppDelegate ()
@@ -15,16 +16,26 @@
 @property (strong, nonatomic) NSStatusItem *statusItem;
 @property (strong, nonatomic) NSArray *boardListArray;
 @property (strong, nonatomic) NSDictionary *currSelectedBoard;
+
+@property (nonatomic, strong) GitManager *gitManager;
+
 @end
 
 @implementation AppDelegate
 
 NSString * const APP_KEY = @"APP_KEY";
 NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
+NSString * const GIT_PATH_KEY = @"GIT_PATH";
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
     [self setupMenuBar];
+    
+    
+    NSString *gitPath = [[NSUserDefaults standardUserDefaults] objectForKey:GIT_PATH_KEY];
+    if(gitPath){
+        self.gitManager = [[GitManager alloc] initWithPath:gitPath];
+    }
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -41,6 +52,27 @@ NSString * const AUTH_TOKEN = @"AUTH_TOKEN";
     
     
 }
+
+- (IBAction)connectToGit:(id)sender
+{
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.messageText = @"Enter the path to your git repo:";
+    [alert addButtonWithTitle:@"Ok"];
+    [alert addButtonWithTitle:@"Cancel"];
+    
+    NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 400, 24)];
+    [textField setStringValue:[[NSUserDefaults standardUserDefaults] stringForKey:GIT_PATH_KEY]];
+    [textField selectText:self];
+    [alert setAccessoryView:textField];
+    
+    NSModalResponse response = [alert runModal];
+    if(response == NSAlertFirstButtonReturn){
+        NSString *gitPath = [textField stringValue];
+        [[NSUserDefaults standardUserDefaults] setObject:gitPath forKey:GIT_PATH_KEY];
+        self.gitManager = [[GitManager alloc] initWithPath:gitPath];
+    }
+}
+
 
 - (IBAction)connectToTrello:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
